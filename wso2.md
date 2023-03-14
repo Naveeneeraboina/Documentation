@@ -27,10 +27,10 @@ echo $JAVA_HOME
  you will get the management console window, login management console using "admin" as username and password.
 
 Alternative steps:
------------------------
+------------------
 
 Install the package:
---------------------------
+--------------------
 sudo apt-get update
 sudo apt-get install wso2is-5.11.0
 
@@ -38,22 +38,22 @@ sudo apt-get install wso2is-5.11.0
 
 
 For Ubuntu operating system, WSO2 Identity Server product distribution will install to(CARBON_HOME)
--------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 /usr/lib/wso2/wso2is/5.11.0/
 
 start the server:
---------------------
+-----------------
 eraboinanaveen@kubernetes-worker:~/Downloads/wso2is-linux-installer-x64-5.10.0/data/usr/lib/wso2/wso2is/5.10.0/bin$ sh wso2server.sh
 
 
 To uninstall the product, run following command
----------------------------------------------------------------
+-----------------------------------------------
 sudo apt purge wso2is-6.0.0
 
 -> if you have got the ssl certificate issues, solve those issues by using below steps:
 
 Creating a new keystore:
----------------------------------
+------------------------
 step 1: keytool -genkey -alias newcerts -keyalg RSA -keysize 2048 -keystore newkeystore.jks -dname "CN=localhost, OU=Home,O=Home,L=SL,S=WS,C=LK" -storepass mypassword -keypass mypassword 
 
 step 2: keytool -export -alias newcerts -keystore newkeystore.jks -file cert.pem
@@ -72,14 +72,14 @@ step 4: keytool -import -file wso2am-4.1.0/repository/resources/security/cert.pe
 User API:
 -------------
 Follow this documenation for Wso2 SCIM apis for Users,Roles,Groups:
-----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------
 https://is.docs.wso2.com/en/5.11.0/develop/scim2-rest-apis/
 
 
 Note: you can also create roles by using Groups Api.
 
 In the Intellij IDE:
------------------------
+--------------------
 1) i have created spring boot rest template apis for creating users, retrieving users, updating users and deleting users,and integrating wso2 with spring boot by calling the wso2 SCIM User api "https://localhost:9443/t/carbon.super/scim2/Users".
  
 2) provide the authorization as admin as username and password in the spring boot application.
@@ -121,12 +121,12 @@ in Basic auth section.
 you can convert "admin" as username and password in Base64Encoder converter or use the SCIM User api doc, you can give authorization in header section also.   
 
 Groups API:
-----------------
+-----------
 -> Group API is used for creating roles and assigning roles to particular users.
 
 
 In the Intellij IDE:
-----------------------
+--------------------
 1) create spring boot rest template apis for creating roles, retrieving roles, updating roles and deleting roles,and integrating wso2 with spring boot by calling the wso2 SCIM Group api "https://localhost:9443/t/carbon.super/scim2/Groups".
  
 2) provide the authorization as admin as username and password in the spring boot application.
@@ -166,12 +166,12 @@ you can convert "admin" as username and password in Base64Encoder converter or u
 
 
 Roles API:
---------------
+----------
 -> Role api is used for creating roles and assigning permissions to particular users.
 
 
 In the Intellij IDE:
-----------------------
+--------------------
 1) create spring boot rest template apis for creating roles, retrieving roles, updating roles and deleting roles,and integrating wso2 with spring boot by calling the wso2 SCIM Role api "https://localhost:9443/t/carbon.super/scim2/Groups".
  
 2) provide the authorization as admin username and password in the spring boot application.
@@ -211,12 +211,12 @@ in the Basic auth section.
 you can convert "admin" as username and password in Base64Encoder converter or use the SCIM User api doc, you can give authorization in the header section also.   
 
 Tenant API:
----------------
+-----------
 Tenant api is used for creating tenants in the management console.
 
 
 Multi-Tenancy:
--------------------
+--------------
 The goal of multi-tenancy is to maximize resource sharing by allowing multiple users (tenants) to log in and use a single server/cluster at the same time.
 
 Here, I have created two tenants "PickupEats" and "PickupTaxis".
@@ -225,20 +225,20 @@ Here, I have created two tenants "PickupEats" and "PickupTaxis".
 
 
 Follow this documentation for Wso2 Tenant apis:
-----------------------------------------------------------------
+-----------------------------------------------
 https://is.docs.wso2.com/en/5.11.0/develop/tenant-management-rest-api/
 
 
 
 creating users for admin:
----------------------------------
+-------------------------
 Url: "https://localhost:9443/t/carbon.super/scim2/Users"
  
  tenant-domain: carbon.super
 
 
 In the Intellij IDE:
------------------------
+--------------------
 1) I have created spring boot rest template apis for creating tenants, retrieving tenants, and deleting tenants,and integrating wso2 with spring boot by calling the wso2 Tenant api.
 
 "https://localhost:9443/api/server/v1/tenants".
@@ -255,7 +255,7 @@ In the Intellij IDE:
 
 
  -> Here, i'm creating tenant "PickupEats"
-    ---------------------------------------------------
+    --------------------------------------
 
  Ex: 
      @PostMapping("/tenant")
@@ -299,18 +299,13 @@ in the Basic auth section.
 you can convert "admin" as username and password in Base64Encoder converter or use the SCIM User api doc, you can give authorization in the header section also.   
 
 creating users for Pickup-eats.com:
------------------------------------------------
+-----------------------------------
 Url: "https://localhost:9443/t/pickup-eats.com/scim2/Users"
  
  tenant-domain: pickup-eats.com
 
-
-
-
-
-
 In the Intellij IDE:
------------------------
+--------------------
 1) i have created spring boot rest template apis for creating users, retrieving users, updating users and deleting users,and integrating wso2 with spring boot by calling the wso2 SCIM User api "https://localhost:9443/t/pickup-eats.com/scim2/Users".
  
 2) provide the authorization username as "naveen@pickup-eats.com" and password as "naveen123" in the spring boot application.
@@ -350,7 +345,7 @@ In the Intellij IDE:
 you can convert username as "naveen@pickup-eats.com" and password as "naveen123" in Base64Encoder converter or use the SCIM User api doc, you can give authorization in the header section also.   
 
 Local Claim:
-----------------
+------------
 Intellij IDE:
 --------------
 1)create spring boot rest template apis for creating claims, retrieving claims, updating claims and deleting claims,and integrating wso2 with spring boot by calling the wso2 SCIM claims api 
@@ -392,7 +387,7 @@ in the Basic auth section.
 
 
 Claim Dialect:
-------------------
+--------------
 Set of claims is identified as a "Dialect".
 
 Intellij IDE:
@@ -434,11 +429,11 @@ in the Basic auth section.
 
 
 External Claim:
---------------------
+---------------
 Firstly, create claim Dialect(Dialect URI), create Local Claim(Claim URI) and then Select a local claim to be mapped to the external claim URI. 
 
 Intellij IDE:
---------------
+-------------
 1)create spring boot rest template apis for creating External Claim, retrieving External Claim, updating External Claim and deleting External Claim,and integrating wso2 with spring boot by calling the wso2 SCIM Dialect api.
 
  "https://localhost:9443/t/carbon.super/api/server/v1/claim-dialects/"+id+"/claims".
@@ -514,8 +509,6 @@ curl -k -v -X POST -H "Authorization: Basic YWRtaW46YWRtaW4=" -H "Content-Type: 
 "https://localhost:9443/api/identity/auth/v1.1/authenticate"
 curl -k -v -X POST -H "Content-Type: application/json" -d '{ "username": "admin","password": "admin"}'
 "https://localhost:9443/api/identity/auth/v1.1/authenticate"
-
-
 
 
 Import this curl command in the postman, you will get this url: 
@@ -634,5 +627,4 @@ Authorization: Basic <Base64 encoded value of <username>:<password>>
 
 Response:
 {"exp":1464161608,"username":"admin@carbon.super","active":true,"token_type":"Bearer","client_id":"rgfKVdnMQnJSSr_pKFTxj3apiwYa","iat":1464158008}
-
 
