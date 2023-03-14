@@ -35,8 +35,6 @@ sudo apt-get update
 sudo apt-get install wso2is-5.11.0
 
 
-
-
 For Ubuntu operating system, WSO2 Identity Server product distribution will install to(CARBON_HOME)
 ---------------------------------------------------------------------------------------------------
 /usr/lib/wso2/wso2is/5.11.0/
@@ -85,6 +83,7 @@ In the Intellij IDE:
 2) provide the authorization as admin as username and password in the spring boot application.
 
  Note: if you wont provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
+
 
 Ex:
     private static String getBasicAuthHeader() {
