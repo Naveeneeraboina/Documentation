@@ -86,6 +86,7 @@ In the Intellij IDE:
 
 
 Ex:
+
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
@@ -93,8 +94,10 @@ Ex:
 
 
  Ex: 
+ 
     @PostMapping("/user")
     private String CreateUser(@RequestBody Userbody userbody) {
+    
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Basic " + getBasicAuthHeader());
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -133,6 +136,7 @@ In the Intellij IDE:
  Note: if you wont provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
  Ex:
+ 
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
@@ -140,6 +144,7 @@ In the Intellij IDE:
 
 
  Ex: 
+ 
      @PostMapping("/group")
     private String CreateGole(@RequestBody Groups groups) {
         HttpHeaders headers = new HttpHeaders();
@@ -178,6 +183,7 @@ In the Intellij IDE:
  Note: if you won't provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
  Ex:
+ 
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
@@ -185,6 +191,7 @@ In the Intellij IDE:
 
 
  Ex: 
+ 
      @PostMapping("/role")
     private String CreateGole(@RequestBody Groups groups) {
         HttpHeaders headers = new HttpHeaders();
@@ -247,6 +254,7 @@ In the Intellij IDE:
  Note: if you won't provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
  Ex:
+ 
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
@@ -254,9 +262,9 @@ In the Intellij IDE:
 
 
  -> Here, i'm creating tenant "PickupEats"
-    --------------------------------------
-
+    
  Ex: 
+ 
      @PostMapping("/tenant")
     private String CreateTenant(@RequestBody Tenant tenant) {
         HttpHeaders headers = new HttpHeaders();
@@ -274,6 +282,7 @@ In the Intellij IDE:
 3)Use this spring boot uRI in postman "http://localhost:8080/hono/tenant" , provide the tenant payload in Postman.
 
  Ex: 
+ 
      {
     "domain": "Pickup-eats.com",
     "owners": [
@@ -312,6 +321,7 @@ In the Intellij IDE:
  Note: if you won't provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
  Ex:
+ 
     private static String getBasicAuthHeaders() {
         String credentials = "naveen@pickup-eats.com:naveen123";
         return new String(Base64.encodeBase64(credentials.getBytes()));
@@ -356,13 +366,13 @@ Intellij IDE:
  Note: if you won't provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
 Ex:
+
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
     }
+    
 
-
- Ex: 
    @PostMapping("/claims")
     private String CreateClaims(@RequestBody Claims claims) {
         HttpHeaders headers = new HttpHeaders();
@@ -398,13 +408,14 @@ Intellij IDE:
  Note: if you won't provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
 Ex:
+	
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
     }
 
-
  Ex: 
+	
    @PostMapping("/dialects")
     private String CreateClaimDialects(@RequestBody ClaimDialects claimDialects) {
         HttpHeaders headers = new HttpHeaders();
@@ -442,6 +453,7 @@ Intellij IDE:
  Note: if you won't provide the authorization in spring boot, you will get the 401[no-body] unauthorization error.
 
 Ex:
+	
     private static String getBasicAuthHeader() {
         String credentials = "admin:admin";
         return new String(Base64.encodeBase64(credentials.getBytes()));
@@ -449,6 +461,7 @@ Ex:
 
 
  Ex: 
+	
    @PostMapping("/exclaim/{id}")
     private String CreateExternalClaims(@RequestBody ExternalClaim externalClaim,@PathVariable("id") String id) {
         HttpHeaders headers = new HttpHeaders();
@@ -467,7 +480,8 @@ Ex:
  you can provide the authorization as "admin" as username and password in Authorization section, and give "admin" as username and password
 in the Basic auth section. 
 
-Register User
+Register User:
+	
 This API is used to register a user anonymously.
 POST	 https://localhost:9443/t/carbon.super/scim2/Me
 
@@ -480,6 +494,7 @@ Content-Type: application/json
 Authorization: Basic <Base64 encoded value of <username>:<password>>
 
 Requestbody:
+	
 {
    "name": {
    "givenName": "naveen",
@@ -498,12 +513,14 @@ Requestbody:
  "password": "abc123"
  }
 
-Authenticate User
+Authenticate User:
+	
 POST https://localhost:9443/api/identity/auth/v1.1/authenticate
 This API is used to authenticate the user and to get a JWT that can be used to identify the user authenticated.
 https://is.docs.wso2.com/en/latest/apis/use-the-authentication-rest-apis/#/Authentication/post_authenticate
 
-Request 
+Request:
+	
 curl -k -v -X POST -H "Authorization: Basic YWRtaW46YWRtaW4=" -H "Content-Type: application/json"
 "https://localhost:9443/api/identity/auth/v1.1/authenticate"
 curl -k -v -X POST -H "Content-Type: application/json" -d '{ "username": "admin","password": "admin"}'
@@ -514,17 +531,22 @@ Import this curl command in the postman, you will get this url:
 
 “https://localhost:9443/api/identity/auth/v1.1/authenticate”
 
-Request Body
+Request Body:
+	
 {
    "username": "admin",
    "password": "admin"
 }
 Response 
+	
 {"token": "eyJ4NXQiOiJObUptT0dVeE16WmxZak0yWkRSaE5UWmxZVEExWXpkaFpUUmlPV0UwTldJMk0ySm1PVGMxWkEiLCJraWQiOiJObUptT0dVeE16WmxZak0yWkRSaE5UWmxZVEExWXpkaFpUUmlPV0UwTldJMk0ySm1PVGMxWkEiLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiX01yYUVvZjlzdXN3aHNabC1sOXkxQSIsImFjciI6InVybjptYWNlOmluY29tbW9uOmlhcDpzaWx2ZXIiLCJzdWIiOiJhZG1pbiIsImF1ZCI6WyJmOVpRR182UFdSbTRidUZIcWkzWGw4SkZpZGNhIl0sImF6cCI6ImY5WlFHXzZQV1JtNGJ1RkhxaTNYbDhKRmlkY2EiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE1Mjg4ODg2NDksImlhdCI6MTUyODg4NTA0OX0.EhOa4TDMroWrZfKFXq0wJU4bLSq79GvTXsZVpb3hJkEFL7OSx0YKZ6A9FhAi4TUcRRpFyti74kNGcU2DcRg_UZVQ9drq4L_YfdPBvqDUfwt8Au0Q3lRVVE-nvNzbJVa3IukxD6KSBMqynua6RtLRv5n3P6MuHy8uWDJR4KxMlDc"}
 
-Login User
+Login User:
+	
 POST https://localhost:9443/api/identity/auth/v1.0/login
-Request 
+	
+Request:
+	
 curl -X POST \
   https://<host>:<port>/api/identity/auth/v1.0/login \
   -H 'Content-Type: application/json' \
@@ -548,21 +570,26 @@ Import this curl command in the postman, you will get this url:
 “https://localhost:9443/api/identity/auth/v1.0/login”
 
 
-Request Body
+Request Body:
+	
 {
    "username": "admin",
    "password": "admin"
 }
-Response 
+	
+Response: 
+	
 {
     "status": "success",
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYyMjE4NDY4MywiZXhwIjoxNjIyMTg4MjgzLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.8Fy-lA0NU6F5U6W5U6v5U6x5U6x5U6x5U6v5U6x5U6v5U6v5U6v5U6x5U6x5U6v5U6v5U6x5U6x5U6v5U6v5U6x5U6x5U6v5U6v5U6x5U6v5U6v5U6v5U6x5U6
 
-Logout User
+Logout User:
+	
 Use below documentation for logout user:
 https://is.docs.wso2.com/en/latest/apis/session-mgt-rest-api/
 
 Use this documentation to construct a logout URL so that an application can redirect to a particular logout page when the relying party (RP) sends an OpenID Connect (OIDC) logout request.
+	
 https://is.docs.wso2.com/en/latest/guides/login/oidc-logout-url-redirection/
 curl -v -k --user <username>:<password> -H "Authorization: Basic <Base64 encoded value of <username>:<password>>" -H "Content-Type: application/json" -X DELETE https://<host>:<port>/scim2/Users/<user-id>/Logout
 
@@ -571,6 +598,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer <access_token>'
+	
 Note:
 Replace <username>, <password>, <host>, and <port> with appropriate values.
 Also replace <user-id> with the ID of the user you want to log out.
@@ -581,28 +609,35 @@ Content-Type: application/json
 Authorization: Basic <Base64 encoded value of <username>:<password>>
 
 Request Body:
+	
 {}
 Response:
+	
 HTTP/1.1 204 No Content
 
 
 Refresh Token API:
+	
 https://is.docs.wso2.com/en/6.0.0/guides/access-delegation/configure-refresh-token/#!
 curl -k -d "grant_type=refresh_token&refresh_token=<refresh_token>" -H "Authorization: Basic <Base64Encoded(Client_Id:Client_Secret)>" -H "Content-Type: application/x-www-form-urlencoded" https://localhost:9443/oauth2/token
+	
 Note:
 Replace <username>, <password>, <host>, and <port> with appropriate values.
 Replace <refresh_token> with a valid refresh token.
 The value for the Authorization header should be the Base64 encoded value of <username>:<password>.
 
 Headers:
+	
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic <Base64 encoded value of <username>:<password>>
 
 Request Body:
+	
  grant_type=refresh_token &
  refresh_token=<refresh_token>  
 
  Response:
+	
    HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -612,15 +647,18 @@ Content-Type: application/json
    "token_type":"Bearer",
    "expires_in":3600,
    }
+	
 Validate the token:
 Use this documentation for validating the token:
 
 https://is.docs.wso2.com/en/latest/guides/access-delegation/invoke-oauth-introspection-endpoint/
 
 Request:
+	
 curl -k -u admin:admin -H 'Content-Type: application/x-www-form-urlencoded' -X POST --data 'token=fbc4e794-23db-3394-b1e5-f2c3e511d01f' https://localhost:9443/oauth2/introspect
 
 Headers:
+	
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic <Base64 encoded value of <username>:<password>>
 
